@@ -1,0 +1,37 @@
+version: 2.1
+orbs:
+  node: circleci/node@4.1
+
+jobs:
+  demo-tests:
+    docker:
+      - image: cimg/node:15.1-browsers
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+          name: Install npm dependencies
+          command: |
+            npm install
+      - run:
+          name: Run tests
+          command: |
+            npm test
+      - store_artifacts:
+          path: allure-report/
+
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - demo-tests
+  periodical:
+    triggers:
+      - schedule:
+          cron: "0 10 * * 1-5"
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - demo-tests

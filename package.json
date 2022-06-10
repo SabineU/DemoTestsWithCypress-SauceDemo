@@ -1,0 +1,29 @@
+{
+  "name": "demotestswithcypress-saucedemo",
+  "version": "1.0.0",
+  "description": "demotestswithcypress-saucedemo",
+  "main": "index.js",
+  "scripts": {
+    "cy:run": "cypress run --env allure=true",
+    "allure:report": "allure generate allure-results --clean -o allure-report",
+    "test": "npm run cy:run || npm run posttest",
+    "posttest": "npm run allure:report",
+    "openReport": "allure open ./allure-report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SabineU/DemoTestsWithCypress-SauceDemo.git"
+  },
+  "author": "Sabine",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SabineU/DemoTestsWithCypress-SauceDemo/issues"
+  },
+  "homepage": "https://github.com/SabineU/DemoTestsWithCypress-SauceDemo#readme",
+  "devDependencies": {
+    "@shelex/cypress-allure-plugin": "^2.26.5",
+    "allure-commandline": "^2.17.2",
+    "cypress": "^9.5.4",
+    "typescript": "^4.6.3"
+  }
+}
