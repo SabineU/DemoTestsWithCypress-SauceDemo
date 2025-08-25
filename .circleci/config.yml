@@ -25,13 +25,13 @@ workflows:
   commit:
     jobs:
       - demo-tests
-  periodical:
-    triggers:
-      - schedule:
-          cron: "0 10 * * 1-5"
-          filters:
-            branches:
-              only:
-                - main
+  #periodical:
+   # triggers:
+    #  - schedule:
+     #     cron: "0 10 * * 1-5"
+      #    filters:
+       #     branches:
+        #      only:
+         #       - main
     jobs:
       - demo-tests
